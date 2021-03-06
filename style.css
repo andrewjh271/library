@@ -15,7 +15,7 @@ input:focus {
 }
 
 .wrapper {
-  width: 70%;
+  width: 700px;
   margin: 7vh auto;
   position: relative;
 }
@@ -43,18 +43,23 @@ button > * {
   pointer-events: none;
 }
 
+h1 {
+  margin: 0;
+  font-size: 38px;
+  color: #1e1e2d;
+}
+
 .add-book {
   position: relative;
-  margin: 0 auto;
   display: block;
-  top: -15px;
+  top: -21px;
   width: 200px;
   height: 36px;
   transition: 0.6s;
 }
 
 .new-book-form {
-  top: 8px;
+  top: 14px;
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -62,7 +67,7 @@ button > * {
 }
 
 .new-book-form > input {
-  height: 30px;
+  height: 36px;
   border: 1px solid #a4a4a4;
   padding-left: 5px;
   font-size: 16px;
@@ -86,6 +91,10 @@ transform: translateY(-400px);
 
 table, th, td {
   border-collapse: collapse;
+}
+
+table {
+  width: 100%;
 }
 
 th, td {
