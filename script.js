@@ -1,41 +1,34 @@
 const library = [];
 
-const newBookForm = document.querySelector('.new-book-form');
+const libraryItems = document.querySelector('.library-items');
 const addBookButton = document.querySelector('.add-book');
+const newBookForm = document.querySelector('.new-book-form');
+const headers = document.querySelectorAll('th');
+
+libraryItems.addEventListener('click', deleteBook)
+libraryItems.addEventListener('click', toggleRead)
 
 addBookButton.addEventListener('click', displayBookForm)
-
-function displayBookForm() {
-  addBookButton.classList.add('hidden');
-  newBookForm.classList.remove('hidden')
-}
-
-function hideBookForm() {
-  newBookForm.classList.add('hidden')
-  addBookButton.classList.remove('hidden');
-}
-
-
 newBookForm.addEventListener('submit', addBook);
+headers.forEach(header => header.addEventListener('click', sortDisplay));
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 };
 
 function addBookToLibrary(book) {
   library.push(book);
 }
 
-
-const libraryItems = document.querySelector('.library-items');
-libraryItems.addEventListener('click', deleteBook)
-libraryItems.addEventListener('click', toggleRead)
-
-function displayBooks() {
-  libraryItems.innerHTML = library.map((book, i) => {
+function displayBooks(sortParam = null) {
+  libraryItems.innerHTML = library
+    .sort((a, b) => a[sortParam] < b[sortParam] ? -1 : 1)
+    .map((book, i) => {
       return `<tr>
         <td>${book.title}</td>
         <td>${book.author}</td>
@@ -52,6 +45,22 @@ function displayBooks() {
     }).join('');
 }
 
+function sortDisplay(e) {
+  param = e.target.textContent.toLowerCase().replace('?', '');
+  console.log(param);
+  displayBooks(param);
+}
+
+function displayBookForm() {
+  addBookButton.classList.add('hidden');
+  newBookForm.classList.remove('hidden')
+}
+
+function hideBookForm() {
+  newBookForm.classList.add('hidden')
+  addBookButton.classList.remove('hidden');
+}
+
 function addBook(e) {
   e.preventDefault();
   const title = this.querySelector('[name=title]').value
@@ -62,14 +71,12 @@ function addBook(e) {
   addBookToLibrary(book);
   hideBookForm();
   displayBooks();
-
-  console.log(title, author, pages, read);
+  this.reset();
 }
 
 function toggleRead(e) {
   if(!e.target.matches('.progress')) return;
   index = e.target.dataset.index
-  console.log(index)
   library[index].read = !library[index].read
   displayBooks();
 }
@@ -80,11 +87,15 @@ function deleteBook(e) {
   displayBooks();
 }
 
-let theHobbit = new Book('The Hobbit', 'JR TOLKEIN', 444, true)
-let exitWest = new Book('Exit West', 'Mohsin Hamid', 248, true)
+const books = [];
+books[1] = new Book('The Far Field', 'Madhuri Vijay', 432, false);
+books[2] = new Book('Discourses and Selected Writings', 'Epictetus', 245, false);
+books[3] = new Book('Exit West', 'Mohsin Hamid', 231, true);
+books[4] = new Book('Einstein\'s Dreams', 'Alan Lightman', 140, false);
+books[5] = new Book('One Good Turn', 'Kate Atkinson', 418, true);
+books[6] = new Book('The Sense of an Ending', 'Julian Barnes', 163, true);
+books[7] = new Book('The Idiot', 'Fyodor Dostoevsky', 615, true);
 
-addBookToLibrary(theHobbit)
-addBookToLibrary(exitWest)
-addBookToLibrary(new Book('Harry Potter', 'JK Rowling', 88))
+books.forEach(book => addBookToLibrary(book));
 
 displayBooks();
