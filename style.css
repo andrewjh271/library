@@ -1,0 +1,79 @@
+.wrapper {
+  width: 70%;
+  margin: auto;
+  position: relative;
+}
+
+button:hover,
+input[type='submit'] {
+  cursor: pointer;
+}
+
+button > * {
+  pointer-events: none;
+}
+
+.add-book {
+  position: relative;
+  top: -15px;
+  width: 200px;
+  height: 30px;
+  margin: 0 auto;
+  display: block;
+  transition: 0.6s;
+}
+
+.new-book-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: fit-content;
+  transition: 0.6s;
+}
+
+.new-book-form > input {
+  margin-right: 10px;
+}
+
+.hidden {
+transform: translateY(-400px);
+}
+
+.progress {
+  z-index: 99;
+}
+
+table, th, td {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #cecece;
+  padding: 15px;
+}
+
+.td-booking {
+  padding-top: 0;
+  padding-bottom: 0;
+  width: 10vw;
+}
+
+th {
+  background-color: #0098c578;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+tr {
+  background-color: #f5faff;
+}
+
+tr:nth-child(even) {
+  background-color: #f0f5ff;
+}
+
+table {
+  margin-left: auto;
+  margin-right: auto;
+}

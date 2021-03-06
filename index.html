@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Library</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/07b0558508.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class='wrapper'>
+
+    <form class='new-book-form hidden'>
+      <input type='text' name='title' placeholder='Title' required>
+      <input type='text' name='author' placeholder='Author' required>
+      <input type='text' name='pages' placeholder='Pages'>
+      <label for='read'>Read?</label>
+      <input type='checkbox' name='read'>
+      <input type='submit' value='+ Add Book'>
+    </form>
+
+    <button class='add-book'>Add Book</button>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Pages</th>
+          <th>Read?</th>
+          <th></th>
+        </tr>
+      </thead>
+  
+      <tbody class='library-items'>
+        <td>Loading...</td>
+      </tbody>
+    </table>
+  </div>
+
+  <script type='text/javascript' src='script.js'></script>
+  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</body>
+</html>
