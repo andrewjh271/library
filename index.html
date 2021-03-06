@@ -6,8 +6,9 @@
   <meta charset="utf-8">
   <title>Library</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Antic+Slab&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/07b0558508.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -16,9 +17,11 @@
     <form class='new-book-form hidden'>
       <input type='text' name='title' placeholder='Title' required>
       <input type='text' name='author' placeholder='Author' required>
-      <input type='text' name='pages' placeholder='Pages'>
-      <label for='read'>Read?</label>
-      <input type='checkbox' name='read'>
+      <input type='number' name='pages' placeholder='Pages'>
+      <div class='checkbox-container'>
+        <label for='read'>Read?</label>
+        <input type='checkbox' name='read'>
+      </div>
       <input type='submit' value='+ Add Book'>
     </form>
 
@@ -42,6 +45,5 @@
   </div>
 
   <script type='text/javascript' src='script.js'></script>
-  <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 </body>
 </html>
