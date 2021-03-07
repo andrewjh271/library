@@ -1,5 +1,3 @@
-const library = [];
-
 const libraryItems = document.querySelector('.library-items');
 const addBookButton = document.querySelector('.add-book');
 const newBookForm = document.querySelector('.new-book-form');
@@ -13,17 +11,25 @@ newBookForm.addEventListener('submit', addBook);
 headers.forEach((header) => header.addEventListener('click', sortDisplay));
 
 class Book {
-  constructor(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+  constructor(params) {
+    this.title = params.title;
+    this.author = params.author;
+    this.pages = params.pages;
+    this.read = params.read;
     this.toggleRead = () => (this.read = !this.read);
   }
 }
 
+const storedLibrary = localStorage.getItem('library');
+if (storedLibrary) {
+  var library = JSON.parse(storedLibrary).map((book) => new Book(book));
+} else {
+  var library = [];
+}
+
 function addBookToLibrary(book) {
   library.push(book);
+  localStorage.setItem('library', JSON.stringify(library));
 }
 
 function displayBooks(sortParam = null) {
@@ -81,30 +87,65 @@ function addBook(e) {
 function toggleRead(e) {
   if (!e.target.matches('.progress')) return;
   index = e.target.dataset.index;
+  console.log(index);
   library[index].toggleRead();
+  localStorage.setItem('library', JSON.stringify(library));
   displayBooks();
 }
 
 function deleteBook(e) {
   if (!e.target.matches('.delete')) return;
   library.splice(e.target.dataset.index, 1);
+  localStorage.setItem('library', JSON.stringify(library));
   displayBooks();
 }
 
-const books = [];
-books[1] = new Book('The Far Field', 'Madhuri Vijay', 432, false);
-books[2] = new Book(
-  'Discourses and Selected Writings',
-  'Epictetus',
-  245,
-  false
-);
-books[3] = new Book('Exit West', 'Mohsin Hamid', 231, true);
-books[4] = new Book("Einstein's Dreams", 'Alan Lightman', 140, false);
-books[5] = new Book('One Good Turn', 'Kate Atkinson', 418, true);
-books[6] = new Book('The Sense of an Ending', 'Julian Barnes', 163, true);
-books[7] = new Book('The Idiot', 'Fyodor Dostoevsky', 615, true);
+// take out b/c of localStorage
 
-books.forEach((book) => addBookToLibrary(book));
+// const books = [];
+// books[1] = new Book({
+//   title: 'The Far Field',
+//   author: 'Madhuri Vijay',
+//   pages: 432,
+//   read: false,
+// });
+// books[2] = new Book({
+//   title: 'Discourses and Selected Writings',
+//   author: 'Epictetus',
+//   pages: 245,
+//   read: false,
+// });
+// books[3] = new Book({
+//   title: 'Exit West',
+//   author: 'Mohsin Hamid',
+//   pages: 231,
+//   read: true,
+// });
+// books[4] = new Book({
+//   title: "Einstein's Dreams",
+//   author: 'Alan Lightman',
+//   pages: 140,
+//   read: false,
+// });
+// books[5] = new Book({
+//   title: 'One Good Turn',
+//   author: 'Kate Atkinson',
+//   pages: 418,
+//   read: true,
+// });
+// books[6] = new Book({
+//   title: 'The Sense of an Ending',
+//   author: 'Julian Barnes',
+//   pages: 163,
+//   read: true,
+// });
+// books[7] = new Book({
+//   title: 'The Idiot',
+//   author: 'Fyodor Dostoevsky',
+//   pages: 615,
+//   read: true,
+// });
+
+// books.forEach((book) => addBookToLibrary(book));
 
 displayBooks();
