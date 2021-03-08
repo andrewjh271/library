@@ -20,11 +20,10 @@ class Book {
   }
 }
 
+let library = [];
 const storedLibrary = localStorage.getItem('library');
 if (storedLibrary) {
-  var library = JSON.parse(storedLibrary).map((book) => new Book(book));
-} else {
-  var library = [];
+  library = JSON.parse(storedLibrary).map((book) => new Book(book));
 }
 
 function addBookToLibrary(book) {
@@ -77,7 +76,7 @@ function addBook(e) {
   const author = this.querySelector('[name=author]').value;
   const pages = this.querySelector('[name=pages]').value;
   const read = this.querySelector('[name=read]').checked;
-  book = new Book(title, author, pages, read);
+  book = new Book({ title: title, author: author, pages: pages, read: read });
   addBookToLibrary(book);
   hideBookForm();
   displayBooks();
