@@ -72,11 +72,12 @@ function hideBookForm() {
 
 function addBook(e) {
   e.preventDefault();
-  const title = this.querySelector('[name=title]').value;
-  const author = this.querySelector('[name=author]').value;
-  const pages = this.querySelector('[name=pages]').value;
-  const read = this.querySelector('[name=read]').checked;
-  book = new Book({ title: title, author: author, pages: pages, read: read });
+  book = new Book({
+    title: this.querySelector('[name=title]').value,
+    author: this.querySelector('[name=author]').value,
+    pages: this.querySelector('[name=pages]').value,
+    read: this.querySelector('[name=read]').checked,
+  });
   addBookToLibrary(book);
   hideBookForm();
   displayBooks();
@@ -86,7 +87,6 @@ function addBook(e) {
 function toggleRead(e) {
   if (!e.target.matches('.progress')) return;
   index = e.target.dataset.index;
-  console.log(index);
   library[index].toggleRead();
   localStorage.setItem('library', JSON.stringify(library));
   displayBooks();
