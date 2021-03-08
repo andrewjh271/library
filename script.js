@@ -99,52 +99,53 @@ function deleteBook(e) {
   displayBooks();
 }
 
-// take out b/c of localStorage
+const books = [];
+books[1] = new Book({
+  title: 'The Far Field',
+  author: 'Madhuri Vijay',
+  pages: 432,
+  read: false,
+});
+books[2] = new Book({
+  title: 'Discourses and Selected Writings',
+  author: 'Epictetus',
+  pages: 245,
+  read: false,
+});
+books[3] = new Book({
+  title: 'Exit West',
+  author: 'Mohsin Hamid',
+  pages: 231,
+  read: true,
+});
+books[4] = new Book({
+  title: "Einstein's Dreams",
+  author: 'Alan Lightman',
+  pages: 140,
+  read: false,
+});
+books[5] = new Book({
+  title: 'One Good Turn',
+  author: 'Kate Atkinson',
+  pages: 418,
+  read: true,
+});
+books[6] = new Book({
+  title: 'The Sense of an Ending',
+  author: 'Julian Barnes',
+  pages: 163,
+  read: true,
+});
+books[7] = new Book({
+  title: 'The Idiot',
+  author: 'Fyodor Dostoevsky',
+  pages: 615,
+  read: true,
+});
 
-// const books = [];
-// books[1] = new Book({
-//   title: 'The Far Field',
-//   author: 'Madhuri Vijay',
-//   pages: 432,
-//   read: false,
-// });
-// books[2] = new Book({
-//   title: 'Discourses and Selected Writings',
-//   author: 'Epictetus',
-//   pages: 245,
-//   read: false,
-// });
-// books[3] = new Book({
-//   title: 'Exit West',
-//   author: 'Mohsin Hamid',
-//   pages: 231,
-//   read: true,
-// });
-// books[4] = new Book({
-//   title: "Einstein's Dreams",
-//   author: 'Alan Lightman',
-//   pages: 140,
-//   read: false,
-// });
-// books[5] = new Book({
-//   title: 'One Good Turn',
-//   author: 'Kate Atkinson',
-//   pages: 418,
-//   read: true,
-// });
-// books[6] = new Book({
-//   title: 'The Sense of an Ending',
-//   author: 'Julian Barnes',
-//   pages: 163,
-//   read: true,
-// });
-// books[7] = new Book({
-//   title: 'The Idiot',
-//   author: 'Fyodor Dostoevsky',
-//   pages: 615,
-//   read: true,
-// });
-
-// books.forEach((book) => addBookToLibrary(book));
+// seed library list if empty
+if (library.length === 0) {
+  books.forEach((book) => addBookToLibrary(book));
+}
 
 displayBooks();
