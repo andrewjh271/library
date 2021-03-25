@@ -16,7 +16,10 @@ class Book {
     this.author = params.author;
     this.pages = params.pages;
     this.read = params.read;
-    this.toggleRead = () => (this.read = !this.read);
+  }
+
+  toggleRead() {
+    this.read = !this.read;
   }
 }
 
