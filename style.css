@@ -1,3 +1,7 @@
+:root {
+  --cancel-color: #9549ff82;
+}
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -20,8 +24,14 @@ input:focus {
   position: relative;
 }
 
+input {
+  font-family: 'Antic Slab', serif;
+}
+
 button,
 input[type='submit'] {
+  font-family: 'Antic Slab', serif;
+  font-size: 15px;
   height: 30px;
   border: 1px solid #d7d7ff;
   background-color: #9dbff1;
@@ -71,6 +81,19 @@ h1 {
   border: 1px solid #a4a4a4;
   padding-left: 5px;
   font-size: 16px;
+}
+
+.new-book-form > button {
+  height: 36px;
+  padding: 0 10px 0 10px;
+}
+
+.new-book-form > button.cancel {
+  background-color: var(--cancel-color);
+}
+
+.delete {
+  background-color: var(--cancel-color);
 }
 
 input[name='pages'] {

@@ -1,6 +1,7 @@
 const libraryItems = document.querySelector('.library-items');
 const addBookButton = document.querySelector('.add-book');
 const newBookForm = document.querySelector('.new-book-form');
+const cancelFormButton = document.querySelector('.cancel');
 const headers = document.querySelectorAll('th');
 
 libraryItems.addEventListener('click', deleteBook);
@@ -8,6 +9,7 @@ libraryItems.addEventListener('click', toggleRead);
 
 addBookButton.addEventListener('click', displayBookForm);
 newBookForm.addEventListener('submit', addBook);
+cancelFormButton.addEventListener('click', cancelBookForm);
 headers.forEach((header) => header.addEventListener('click', sortDisplay));
 
 class Book {
@@ -71,6 +73,12 @@ function displayBookForm() {
 function hideBookForm() {
   newBookForm.classList.add('hidden');
   addBookButton.classList.remove('hidden');
+}
+
+function cancelBookForm(e) {
+  e.preventDefault();
+  this.parentNode.reset();
+  hideBookForm();
 }
 
 function addBook(e) {
