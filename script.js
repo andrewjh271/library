@@ -83,6 +83,7 @@ function cancelBookForm(e) {
 
 function addBook(e) {
   e.preventDefault();
+  if(!newBookForm.checkValidity()) return;
   book = new Book({
     title: this.querySelector('[name=title]').value,
     author: this.querySelector('[name=author]').value,

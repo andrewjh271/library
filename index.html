@@ -15,10 +15,10 @@
   <div class='wrapper'>
     <h1>Library App</h1>
 
-    <form class='new-book-form hidden'>
+    <form class='new-book-form hidden' novalidate>
       <input type='text' name='title' placeholder='Title' required>
       <input type='text' name='author' placeholder='Author' required>
-      <input type='number' name='pages' placeholder='Pages'>
+      <input type='number' name='pages' placeholder='Pages' min="1">
       <div class='checkbox-container'>
         <label for='read'>Read?</label>
         <input type='checkbox' name='read'>
@@ -51,5 +51,6 @@
   </div>
 
   <script type='text/javascript' src='script.js'></script>
+  <script type='text/javascript' src='validation.js'></script>
 </body>
 </html>
