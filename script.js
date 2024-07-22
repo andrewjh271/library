@@ -36,7 +36,7 @@ function addBookToLibrary(book) {
   localStorage.setItem('library', JSON.stringify(library));
 }
 
-function displayBooks(sortParam = null) {
+function displayBooks(sortParam) {
   libraryItems.innerHTML = library
     .sort((a, b) => (a[sortParam] < b[sortParam] ? -1 : 1))
     .map(
@@ -85,10 +85,10 @@ function addBook(e) {
   e.preventDefault();
   if(!newBookForm.checkValidity()) return;
   book = new Book({
-    title: this.querySelector('[name=title]').value,
-    author: this.querySelector('[name=author]').value,
-    pages: this.querySelector('[name=pages]').value,
-    read: this.querySelector('[name=read]').checked,
+    title: this.title.value,
+    author: this.author.value,
+    pages: this.pages.value,
+    read: this.read.checked,
   });
   addBookToLibrary(book);
   hideBookForm();
