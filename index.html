@@ -15,13 +15,13 @@
   <div class='wrapper'>
     <h1>Library App</h1>
 
-    <form class='new-book-form hidden' novalidate>
+    <form class='new-book-form hidden not-submitted' novalidate>
       <input type='text' name='title' placeholder='Title' required>
       <input type='text' name='author' placeholder='Author' required>
       <input type='number' name='pages' placeholder='Pages' min="1">
       <div class='checkbox-container'>
         <label for='read'>Read?</label>
-        <input type='checkbox' name='read'>
+        <input type='checkbox' id = 'read' name='read'>
       </div>
       <button type='submit'>
         <span class='material-icons'>add</span>

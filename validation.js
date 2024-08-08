@@ -1,12 +1,10 @@
 const form = document.querySelector('.new-book-form');
-const title = form.querySelector('[name="title"]');
-const author = form.querySelector('[name="author"]');
-const pages = form.querySelector('[name="pages"]');
+const { title, author, pages } = form;
 
 window.addEventListener('load', loadValidations);
 
 title.addEventListener('input', titleValidity);
-author.addEventListener('input',  authorValidity);
+author.addEventListener('input', authorValidity);
 
 function loadValidations() {
   titleValidity();
@@ -27,17 +25,18 @@ function authorValidity() {
   } else {
     author.setCustomValidity('');
   }
-};
+}
 
 function pagesValidity() {
   if (pages.validity.rangeUnderflow) {
-    pages.setCustomValidity('Number of pages must be at least 1!')
+    pages.setCustomValidity('Number of pages must be at least 1!');
   } else {
     pages.setCustomValidity('');
   }
 }
 
 form.addEventListener('submit', (e) => {
+  form.classList.remove('not-submitted');
   pages.reportValidity();
   author.reportValidity();
   title.reportValidity();

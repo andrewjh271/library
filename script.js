@@ -71,14 +71,14 @@ function displayBookForm() {
 }
 
 function hideBookForm() {
-  newBookForm.classList.add('hidden');
+  newBookForm.classList.add('hidden', 'not-submitted');
   addBookButton.classList.remove('hidden');
 }
 
 function cancelBookForm(e) {
   e.preventDefault();
-  this.parentNode.reset();
   hideBookForm();
+  setTimeout(() => this.parentNode.reset(), 400);
 }
 
 function addBook(e) {

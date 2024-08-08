@@ -83,6 +83,14 @@ h1 {
   font-size: 16px;
 }
 
+.new-book-form > input:invalid {
+  border: 1px solid #ee3c7a;
+}
+
+.new-book-form.not-submitted > input {
+  border: 1px solid #a4a4a4;
+}
+
 .new-book-form > button {
   height: 36px;
   padding: 0 10px 0 10px;
@@ -101,7 +109,7 @@ input[name='pages'] {
 }
 
 .hidden {
-transform: translateY(-400px);
+  transform: translateY(-400px);
 }
 
 .checkbox-container {
